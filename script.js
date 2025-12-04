@@ -12,7 +12,7 @@ function setHeaderInfo() {
     else if (hour < 12) greet = "Good Morning";
     else if (hour < 18) greet = "Good Afternoon";
     else greet = "Good Evening";
-    welcomeMsg.textContent = `${greet}, Akshat!`;
+    welcomeMsg.textContent = `${greet}, visitors!`;
 
     // Format date: Day, Date, Time
     const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
