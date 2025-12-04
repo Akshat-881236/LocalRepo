@@ -1,108 +1,100 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Personalized Portfolio Dashboard</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <title>My Profile Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- LOGIN VIEW -->
-<section id="login-view" class="centered">
-  <div class="card login-card">
-    <h1>Welcome back 👋</h1>
-
-    <form id="login-form" novalidate>
-      <div class="form-row">
-        <label for="userid">User ID</label>
-        <input id="userid" name="userid" type="text" placeholder="User ID" required />
-      </div>
-
-      <div class="form-row">
-        <label for="useremail">Email</label>
-        <input id="useremail" name="useremail" type="email" placeholder="you@example.com" required />
-      </div>
-
-      <div class="form-row">
-        <label for="username">User Name</label>
-        <input id="username" name="username" type="text" placeholder="Full name" required />
-      </div>
-
-      <div class="form-row">
-        <label for="dob">D.O.B</label>
-        <input id="dob" name="dob" type="date" required />
-      </div>
-
-      <div class="form-row">
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" placeholder="Password" required />
-      </div>
-
-      <div class="captcha-row">
-        <canvas id="captcha-canvas" width="160" height="50" title="captcha"></canvas>
-        <button type="button" id="captcha-refresh" class="link-btn">↻</button>
-      </div>
-
-      <div class="form-row">
-        <label for="captcha-input">Enter Captcha</label>
-        <input id="captcha-input" name="captcha-input" type="text" placeholder="Type captcha text" required />
-      </div>
-
-      <div class="form-actions">
-        <button id="login-btn" class="btn primary">Log in</button>
-      </div>
-
-      <p id="login-msg" class="msg"></p>
-    </form>
-
-    <!-- NEW: registration link -->
-    <div class="register-link" style="margin-top:10px;text-align:center;">
-      <a href="form.html" style="color:#2b7cff;text-decoration:none;font-weight:600;">
-        ➕ Request Registration (New User)
-      </a>
-    </div>
-
-  </div>
-  <p class="hint">Tip: Use a local static server to allow XML fetch.</p>
-</section>
-
-    <!-- DASHBOARD VIEW (hidden until login) -->
-    <section id="dashboard-view" class="hidden">
-      <aside id="sidebar">
-        <div class="brand">
-          <h2>My Portfolio</h2>
-          <button id="sidebar-toggle" class="small">≡</button>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="menu-btn" id="sidebarProfile">
+            <img src="profile.jpg" alt="Profile" class="profile-photo">
         </div>
+        <nav>
+            <ul class="sidebar-menu">
+                <li>
+                    <span>
+                        <i class="bi bi-house-door"></i> Dashboard
+                    </span>
+                </li>
+                <li class="expandable">
+                    <span>
+                        <i class="bi bi-globe"></i> Major Sites
+                        <i class="bi bi-chevron-down arrow"></i>
+                    </span>
+                    <ul class="expanded-links">
+                        <li><a href="https://github.com/Akshat-881236" target="_blank"><i class="bi bi-github"></i> GitHub</a></li>
+                        <li><a href="https://linkedin.com/in/akshat-psd" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="https://twitter.com/akshatpsd" target="_blank"><i class="bi bi-twitter"></i> Twitter</a></li>
+                    </ul>
+                </li>
+                <li class="expandable">
+                    <span>
+                        <i class="bi bi-award"></i> Achievements
+                        <i class="bi bi-chevron-down arrow"></i>
+                    </span>
+                    <ul class="expanded-links">
+                        <li><a href="#achievements">Projects</a></li>
+                        <li><a href="#achievements">Awards</a></li>
+                    </ul>
+                </li>
+                <!-- Add more items as needed -->
+            </ul>
+        </nav>
+    </aside>
 
-        <div id="profile-card" class="card small">
-          <div class="profile-name" id="profile-name">User Name</div>
-          <div class="profile-email" id="profile-email">email@example.com</div>
-          <div class="profile-dob" id="profile-dob">DOB</div>
-        </div>
-
-        <nav id="nav-list" class="nav-list"></nav>
-
-        <div class="sidebar-footer">
-          <button id="logout-btn" class="btn danger small">Logout</button>
-        </div>
-      </aside>
-
-      <section id="main-area">
-        <header class="main-header">
-          <h3 id="page-title">Dashboard</h3>
-          <div class="main-actions">
-            <button id="open-latest" class="btn">Open latest project</button>
-          </div>
+    <!-- Main Dashboard -->
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <button id="menuToggle" class="menu-btn">
+                <img src="profile.jpg" alt="Profile" class="profile-photo">
+            </button>
+            <div class="welcome">
+                <h2 id="welcomeMsg"></h2>
+                <div id="thoughtOfDay">
+                    <span class="highlight">Thought: </span>
+                    <span id="typedThought"></span>
+                </div>
+                <div id="dateInfo"></div>
+            </div>
         </header>
 
-        <div id="content" class="content card">
-          <h2>Welcome</h2>
-          <p>Select a link from the left to load content. Static pages load in-place via AJAX — dynamic pages navigate fully.</p>
-        </div>
-      </section>
-    </section>
-  </main>
+        <!-- Visiting Cards Section -->
+        <section class="visiting-cards" id="dashboardSection">
+            <!-- Each card (clickable for SPA) -->
+            <div class="visit-card" data-card="bio">
+                <i class="bi bi-person-fill"></i>
+                <h3>Bio</h3>
+                <div class="card-lbl">Personal Info</div>
+            </div>
+            <div class="visit-card" data-card="education">
+                <i class="bi bi-book"></i>
+                <h3>Education</h3>
+            </div>
+            <div class="visit-card" data-card="skills">
+                <i class="bi bi-lightbulb"></i>
+                <h3>Skills</h3>
+            </div>
+            <div class="visit-card" data-card="projects">
+                <i class="bi bi-kanban"></i>
+                <h3>Projects</h3>
+            </div>
+            <div class="visit-card" data-card="contact">
+                <i class="bi bi-envelope"></i>
+                <h3>Contact Me</h3>
+            </div>
+            <!-- Add more cards as needed -->
+        </section>
 
-  <script src="js/app.js"></script>
+        <!-- SPA Interface (Loaded dynamically) -->
+        <div id="spaContainer" class="spa-container"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
