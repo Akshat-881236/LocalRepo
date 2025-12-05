@@ -1,5 +1,5 @@
 // User profile photo (update path if needed)
-const PROFILE_PHOTO = "profile.jpg";
+const PROFILE_PHOTO = "http://student.mdu.ac.in/Student_Biometrics/881238_Snap_10-4-2024_305%20AKSHAT%20P.jpg";
 
 // Real-time date and greetings
 function setHeaderInfo() {
@@ -30,7 +30,11 @@ const thoughts = [
     "Push past limits, embrace growth every single day.",
     "Push past limits, find happiness in each step.",
     "Push past limits, keep making small progress.",
-    "Push past limits, believe you can do wonders."
+    "Push past limits, believe you can do wonders.",
+    "To shine like a sun, first burn like a sun.",
+    "Life is too short, Learn new things in every seconds of your life.",
+    "Life is too short, Utilize every pace of time.",
+    "Life is too short, Once the time go cannot be recover."
 ];
 function animateThought() {
     const output = document.getElementById("typedThought");
@@ -48,10 +52,10 @@ function animateThought() {
             output.textContent = staticPart + " " + toType.slice(0,i+1);
             i++;
         } else clearInterval(typeInterval);
-    }, 70);
+    }, 50);
 }
 animateThought();
-setInterval(animateThought, 12000); // every 12 sec new thought animates
+setInterval(animateThought, 6000); // every 6 sec new thought animates
 
 // Sidebar toggle logic
 const sidebar = document.getElementById("sidebar");
@@ -102,9 +106,12 @@ function loadSPA(cardType) {
             html += `
             <h2><i class="bi bi-person-fill"></i> Personal Info</h2>
             <img src="${PROFILE_PHOTO}" style="width:84px;border-radius:50%;border:2px solid #74e7fa;background:#efefff;margin-top:12px;">
-            <p><b>Name:</b> Akshat Pratap Singh</p>
+            <p><b>Name:</b> Akshat Prasad</p>
+            <p><b>Father Name:</b> Mr. Sanjay Prasad</p>
+            <p><b>Mother Name:</b> Mrs. Leela Prasad</p>
             <p><b>Bio:</b> Passionate developer and lifelong learner. Loves solving problems and building new things.</p>
-            <p><b>Location:</b> India</p>
+            <p><b>Location:</b>Kherki Daula Gurugram , Haryana , India</p>
+            <p><b>LinkedIn:</b><a href="https://linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=akshat-prasad-b53936379"> Follow me on LinkedIn</a></p>
             `;
             break;
         case "education":
