@@ -279,6 +279,54 @@ body {
     background: #2978fe;
 }
 
+.spa-content { padding: 22px; }
+.spa-layer { background:#fff; padding:16px; border-radius:14px; }
+
+.section-header {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+}
+
+.profile-img {
+    width:84px;
+    border-radius:50%;
+    border:2px solid #74e7fa;
+}
+
+.info-row, .edu-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+    font-size:14px;
+}
+
+.edu-block, .skill-card, .project-card {
+    background:#f3f6ff;
+    padding:14px;
+    border-radius:12px;
+    margin-bottom:12px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width:100%;
+    padding:9px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+.primary-btn {
+    background:#4f46e5;
+    color:#fff;
+    padding:10px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+}
+
 @media (max-width: 800px) {
     .visiting-cards {
         gap: 24px;

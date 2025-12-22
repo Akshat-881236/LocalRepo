@@ -7,6 +7,263 @@
     <!-- Bootstrap CSS Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+      .spa-content { padding: 22px; }
+.spa-layer { background:#fff; padding:16px; border-radius:14px; }
+
+.section-header {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+}
+
+.profile-img {
+    width:84px;
+    border-radius:50%;
+    border:2px solid #74e7fa;
+}
+
+.info-row, .edu-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+    font-size:14px;
+}
+
+.edu-block, .skill-card, .project-card {
+    background:#f3f6ff;
+    padding:14px;
+    border-radius:12px;
+    margin-bottom:12px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width:100%;
+    padding:9px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+.primary-btn {
+    background:#4f46e5;
+    color:#fff;
+    padding:10px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+}
+.hr-icon {
+    position: relative;
+    border: none;
+    height: 1px;
+    background: #ddd;
+}
+
+.hr-icon::after {
+    content: "★";
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    transform: translateX(-50%);
+    background: #1da1f2;
+    color: #4f46e5;
+    padding: 0 8px;
+}
+
+/* ===============================
+   MOBILE FIX : Galaxy S8
+   360 × 740
+================================ */
+@media screen and (max-width: 360px) and (max-height: 740px) {
+
+/* ===== HEADER ===== */
+.dashboard-header{
+    padding: 10px 12px;
+    gap: 10px;
+}
+
+.dashboard-header img{
+    width: 38px;
+    height: 38px;
+}
+
+.welcome h2{
+    font-size: 1rem;
+    line-height: 1.25;
+    margin-bottom: 4px;
+}
+
+#thoughtOfDay{
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+#dateInfo{
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+/* ===== VISIT CARDS ===== */
+.visiting-cards{
+    gap: 22px;
+    margin: 22px 0 70px 0;
+}
+
+.visit-card{
+    min-width: 100%;
+    max-width: 100%;
+    padding: 18px 16px;
+    border-radius: 12px;
+    flex: 1 1 100%;
+}
+
+.visit-card i{
+    font-size: 2rem;
+}
+
+.card-lbl{
+    font-size: 0.82rem;
+}
+
+/* ===== SPA CONTAINER ===== */
+.spa-container{
+    align-items: flex-start;
+    padding-top: 14px;
+}
+
+/* ===== SPA CONTENT ===== */
+.spa-content{
+    width: calc(100% - 24px);
+    min-width: unset;
+    max-width: 100%;
+    min-height: unset;
+    max-height: calc(100vh - 28px);
+    padding: 18px 16px;
+    border-radius: 14px;
+    overflow-y: auto;
+}
+
+/* ===== SPA CLOSE ===== */
+.spa-close{
+    top: 10px;
+    right: 10px;
+    font-size: 1.4rem;
+}
+
+/* ===== BIO IMAGE & INFO ===== */
+.profile-img{
+    width: 64px;
+    height: 64px;
+}
+
+.info-row,
+.edu-grid{
+    grid-template-columns: 0.9fr 1.1fr;
+    font-size: 0.82rem;
+}
+
+.bio-text{
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* ===== INFO CARDS ===== */
+.edu-block,
+.skill-card,
+.project-card{
+    padding: 12px;
+    border-radius: 10px;
+}
+
+/* ===== CONTACT FORM ===== */
+.contact-form{
+    gap: 9px;
+}
+
+.contact-form label{
+    font-size: 0.9rem;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+    font-size: 0.9rem;
+    padding: 8px;
+}
+
+/* ===== BIO SOCIAL ICON FOOTER ===== */
+.social-wrap{
+    padding: 9px;
+}
+
+.social-box{
+    margin: 6px;
+}
+
+.social-icon svg{
+    width: 20px;
+    height: 20px;
+}
+
+/* ===== MAIN FOOTER ===== */
+.footer{
+    padding: 20px 14px;
+}
+
+.footer-inner{
+    gap: 14px;
+}
+
+.socials{
+    justify-content: center;
+}
+
+.quickbar{
+    justify-content: center;
+}
+
+.quick-btn{
+    padding: 8px 12px;
+    font-size: 0.85rem;
+}
+
+.footer-bottom{
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+}
+
+@media screen and (max-width: 360px) and (max-height: 740px){
+
+  .social-wrap{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+  }
+
+  .social-label{
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #64748b;
+      letter-spacing: 0.03em;
+      text-align: center;
+  }
+}
+
+.social-label{
+    display: none;
+}
+
+
+    </style>
 </head>
 <body>
     <!-- Sidebar -->
@@ -29,7 +286,7 @@
                     <ul class="expanded-links">
                         <li><a href="https://github.com/Akshat-881236" target="_blank"><i class="bi bi-github"></i> GitHub</a></li>
                         <li><a href="https://linkedin.com/in/akshat-psd" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a></li>
-                        <li><a href="https://twitter.com/akshatpsd" target="_blank"><i class="bi bi-twitter"></i> Twitter</a></li>
+                        <li><a href="https://x.com/akshatpsd2005" target="_blank"><i class="bi bi-twitter"></i> Twitter</a></li>
                     </ul>
                 </li>
                 <li class="expandable">
@@ -38,7 +295,7 @@
                         <i class="bi bi-chevron-down arrow"></i>
                     </span>
                     <ul class="expanded-links">
-                        <li><a href="#achievements">Projects</a></li>
+                        <li><a href="https://akshat-881236.github.io/Portfolio-881236/Projects.htm">Projects</a></li>
                         <li><a href="#achievements">Awards</a></li>
                     </ul>
                 </li>
@@ -80,14 +337,17 @@
             <div class="visit-card" data-card="skills">
                 <i class="bi bi-lightbulb"></i>
                 <h3>Skills</h3>
+                <div class="card-lbl">About My Skills</div>
             </div>
             <div class="visit-card" data-card="projects">
                 <i class="bi bi-kanban"></i>
                 <h3>Projects</h3>
+                <div class="card-lbl">About My Projects</div>
             </div>
             <div class="visit-card" data-card="contact">
                 <i class="bi bi-envelope"></i>
                 <h3>Contact Me</h3>
+                <div class="card-lbl">Contact me via Form</div>
             </div>
             <!-- Add more cards as needed -->
         </section>
@@ -115,12 +375,12 @@
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>
       </a>
 
-      <a class="social-link" href="youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+      <a class="social-link" href="https://www.youtube.com/channel/UCGU5bLh3NYeRhmaFGY7gjtA" target="_blank" rel="noopener" aria-label="YouTube">
         <!-- YouTube SVG -->
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2s-.2-1.7-.8-2.5c-.8-.9-1.7-.9-2.1-1C16.9 2 12 2 12 2s-4.9 0-8.6.7c-.4.1-1.4.1-2.2 1C.2 4.5 0 6.2 0 6.2S0 8 0 9.8v1.4C0 13 0 14.8 0 14.8s.2 1.7.8 2.5c.8.9 1.8.9 2.3 1 3.5.6 8.9.7 8.9.7s4.9 0 8.6-.7c.4-.1 1.4-.1 2.2-1 .6-.8.8-2.5.8-2.5S24 13 24 11.2V9.8C24 8 23.5 6.2 23.5 6.2zM9.7 14.6V7.4l6.6 3.6-6.6 3.6z" /></svg>
       </a>
 
-      <a class="social-link" href="https://wa.me/917838250289" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <a class="social-link" href="https://wa.me/917838250289?text=Hello%20Akshat%20%0A%0AI%20visited%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you.%0A%0ARegards" target="_blank" rel="noopener" aria-label="WhatsApp">
         <!-- WhatsApp SVG -->
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.52 3.48A11.94 11.94 0 0012 .04 11.9 11.9 0 003.36 3.5 11.96 11.96 0 00.04 12c0 2.05.54 3.98 1.56 5.7L0 24l6.65-1.72A11.96 11.96 0 0012 24c6.62 0 12-5.38 12-12 0-1.96-.44-3.8-1.48-5.52zM12 21.5c-1.47 0-2.9-.4-4.14-1.16l-.3-.19-3.95 1.02 1.06-3.85-.2-.31A8.44 8.44 0 013.5 12c0-4.7 3.82-8.52 8.5-8.52 4.7 0 8.52 3.82 8.52 8.52 0 4.7-3.82 8.52-8.52 8.52zM17.3 14.1c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.8.98-.98 1.18-.18.2-.36.22-.66.07-.3-.15-1.26-.47-2.4-1.49-.89-.8-1.49-1.78-1.66-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2 0-.38-.05-.53-.05-.15-.68-1.6-.93-2.2-.25-.58-.5-.5-.68-.51l-.58-.01c-.2 0-.52.07-.8.35-.28.28-1.08 1.05-1.08 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.3 5.24 4.62 3.08 1.32 3.08.88 3.64.83.57-.05 1.78-.73 2.03-1.45.25-.73.25-1.36.18-1.45-.06-.08-.25-.13-.55-.28z" /></svg>
       </a>
@@ -135,9 +395,9 @@
             <span class="chev" aria-hidden="true">▾</span>
           </button>
           <ul id="quickSitesMenu" class="dropdown" hidden>
-            <li><a href="https://example.com" target="_blank" rel="noopener">Example Site</a></li>
-            <li><a href="https://docs.example.com" target="_blank" rel="noopener">Docs</a></li>
-            <li><a href="https://help.example.com" target="_blank" rel="noopener">Help</a></li>
+            <li><a href="https://x.com/akshatpsd2005" target="_blank" rel="noopener">Twitter</a></li>
+            <li><a href="https://akshat-881236.github.io/Portfolio-881236" target="_blank" rel="noopener">Portfolio</a></li>
+            <li><a href="https://akshat-881236.github.io/Portfolio-881236/localStorage.htm" target="_blank" rel="noopener">Local Storage Manager</a></li>
           </ul>
         </li>
 
@@ -148,7 +408,7 @@
         </li>
 
         <li>
-          <a class="quick-btn" href="https://chat.whatsapp.com/yourcommunityinvite" target="_blank" rel="noopener">
+          <a class="quick-btn" href="https://chat.whatsapp.com/F30hhlKJdjx6oReJLYZ8UK" target="_blank" rel="noopener">
             Join WhatsApp Community
           </a>
         </li>
@@ -160,9 +420,9 @@
               More Links <span class="chev" aria-hidden="true">▸</span>
             </summary>
             <ul class="sub-links">
-              <li><a href="https://sub1.example.com" target="_blank" rel="noopener">Sublink 1</a></li>
-              <li><a href="https://sub2.example.com" target="_blank" rel="noopener">Sublink 2</a></li>
-              <li><a href="https://sub3.example.com" target="_blank" rel="noopener">Sublink 3</a></li>
+              <li><a href="https://akshat-881236.github.io/Portfolio-881236/Index2.htm" target="_blank" rel="noopener">Website Manager</a></li>
+              <li><a href="https://akshat-881236.github.io/Portfolio-881236/file_manager.htm" target="_blank" rel="noopener">File Manager</a></li>
+              <li><a href="https://akshat-881236.github.io/Key-of-Success" target="_blank" rel="noopener">Coaching Centre Portals Demo</a></li>
             </ul>
           </details>
         </li>
@@ -171,7 +431,7 @@
 
     <div class="footer-bottom">
       <p class="copyright">© <span id="copyrightYear"></span> Your Company. All rights reserved.</p>
-      <p class="contact-note">Contact: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+      <p class="contact-note">Contact: <a href="mailto:akshatpsd2005@gmail.com">akshatpsd2005@gmail.com</a></p>
     </div>
   </div>
 </footer>
@@ -327,6 +587,79 @@
     .social-link{ width:40px; height:40px; }
     .quick-btn{ padding:8px 10px; font-size:0.88rem; }
   }
+
+  /* ===== FOOTER BASE ===== */
+.bio-footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.footer-shell {
+    background: linear-gradient(135deg, #eef2ff, #f8faff);
+    border-radius: 18px;
+    padding: 18px;
+}
+
+.footer-layer {
+    border-radius: 14px;
+    padding: 12px;
+}
+
+/* ===== INLINE ICON LAYOUT ===== */
+.social-inline {
+    display: inline-block;
+}
+
+.social-box {
+    display: inline-block;
+    margin: 8px;
+}
+
+.social-wrap {
+    background: #ffffff;
+    border-radius: 50%;
+    padding: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.social-wrap:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 18px 45px rgba(0,0,0,.18);
+}
+
+/* ===== ICON ===== */
+.social-icon svg {
+    width: 26px;
+    height: 26px;
+    fill: #4f46e5;
+}
+
+/* ===== PLATFORM COLORS ===== */
+.linkedin-box svg { fill: #0a66c2; }
+.whatsapp-box svg { fill: #16a34a; }
+.email-box svg    { fill: #d97706; }
+.github-box svg   { fill: #111827; }
+
+/* ===== LINK RESET ===== */
+.social-icon a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.github-box svg {
+    width: 26px;
+    height: 26px;
+    fill: #111827; /* GitHub black */
+}
+
+.linkedin-box svg {
+    width: 26px;
+    height: 26px;
+    fill: #0a66c2; /* Official LinkedIn Blue */
+}
+
 </style>
 
 <!-- FOOTER SCRIPTS -->
