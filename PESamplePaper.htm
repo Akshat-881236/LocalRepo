@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Physical Education Sample Paper Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body{
+  font-family: "Segoe UI", Arial, sans-serif;
+  background:#eef2ff;
+  padding:20px;
+}
+h1{text-align:center}
+.controls{text-align:center;margin-bottom:20px}
+input,button{
+  padding:8px 14px;
+  font-size:15px;
+}
+.paper{
+  width:820px;
+  margin:30px auto;
+  background:#fff;
+  padding:30px;
+  box-shadow:0 0 12px rgba(0,0,0,.15);
+}
+.header{text-align:center;border-bottom:2px solid #000;margin-bottom:15px}
+.meta{text-align:right;font-size:12px}
+.section{margin-top:20px}
+.section h3{border-bottom:1px solid #000}
+.question{margin:6px 0}
+.unit-title{margin-top:10px;font-weight:bold}
+</style>
+</head>
+
+<body>
+
+<h1>📘 Physical Education Sample Paper Generator</h1>
+
+<div class="controls">
+  Number of Sample Papers:
+  <input type="number" id="paperCount" value="1" min="1" max="5">
+  <button onclick="generatePapers()">Generate PDF</button>
+</div>
+
+<div id="paperContainer"></div>
+
+<script>
+/* =========================
+   PREDEFINED QUESTION DB
+========================= */
+
+// SHORT QUESTIONS (15+ each unit)
+const SQ_DB = {
+1:[
+"Define Indus Valley Civilization.",
+"What is the Gurukul system?",
+"Mention any two physical activities of the Vedic period.",
+"What is an Akhara?",
+"Name one contribution of YMCA to Physical Education.",
+"What was the aim of Physical Education in ancient India?",
+"Name one British sport introduced in India.",
+"What is the Great Bath?",
+"Define Physical Education.",
+"Name one post-independence sports institution.",
+"What was the focus of PE during Hindu period?",
+"Define military training.",
+"Name one ancient Indian game.",
+"What is national integration?",
+"Define culture."
+],
+2:[
+"Define growth.",
+"Define development.",
+"Mention one factor affecting growth.",
+"What is adolescence?",
+"Define somatotype.",
+"Name any one body type.",
+"Define exercise.",
+"What is motor development?",
+"Mention one benefit of exercise.",
+"What is heredity?",
+"Define physical fitness.",
+"Name one gender difference in PE.",
+"Define nutrition.",
+"What is bone density?",
+"Define muscular strength."
+],
+3:[
+"Define learning.",
+"What is motor learning?",
+"Define learning curve.",
+"What is performance?",
+"Who gave Trial and Error theory?",
+"Define motivation.",
+"What is feedback?",
+"Name one law of learning.",
+"Define conditioning.",
+"What is insight learning?",
+"Define affective learning.",
+"Define cognitive learning.",
+"What is plateau?",
+"Define reinforcement.",
+"What is practice?"
+],
+4:[
+"Define society.",
+"What is leadership?",
+"Define social integration.",
+"What is gender equality?",
+"Name one social value of sports.",
+"Define cooperation.",
+"What is teamwork?",
+"Define national integration.",
+"What is women empowerment?",
+"Define discipline.",
+"Name one leadership quality.",
+"What is social harmony?",
+"Define culture.",
+"What is fair play?",
+"Define equality."
+]
+};
+
+// LONG QUESTIONS (7 each unit)
+const LQ_DB = {
+1:[
+"Explain Physical Education in Indus Valley Civilization.",
+"Explain Physical Education during the Vedic period.",
+"Explain Physical Education during the Hindu period.",
+"Explain the contribution of British period to Physical Education.",
+"Explain the Great Bath and its importance.",
+"Explain development of Physical Education after 1947.",
+"Explain the role of Akharas in Physical Education."
+],
+2:[
+"Explain growth and development in detail.",
+"Explain factors affecting growth and development.",
+"Explain age and gender differences in Physical Education.",
+"Explain somatotypes and their importance.",
+"Explain biological benefits of exercise.",
+"Explain muscular and skeletal adaptations due to exercise.",
+"Explain role of nutrition in growth."
+],
+3:[
+"Explain types of learning in Physical Education.",
+"Explain learning curve and its types.",
+"Explain relationship between learning and performance.",
+"Explain theories of learning.",
+"Explain laws and principles of learning.",
+"Explain role of motivation in learning.",
+"Explain importance of psychology in Physical Education."
+],
+4:[
+"Explain relationship between society and Physical Education.",
+"Explain leadership through sports.",
+"Explain social integration through physical activities.",
+"Explain Physical Education and gender equality.",
+"Explain role of PE in social development.",
+"Explain role of sports in national integration.",
+"Explain women empowerment through sports."
+]
+};
+
+/* =========================
+   UTIL FUNCTIONS
+========================= */
+function shuffle(arr){
+  return [...arr].sort(()=>0.5-Math.random());
+}
+
+/* =========================
+   GENERATOR
+========================= */
+async function generatePapers(){
+  const total = +document.getElementById("paperCount").value;
+  const container = document.getElementById("paperContainer");
+  container.innerHTML = "";
+
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF("p","mm","a4");
+
+  for(let p=1;p<=total;p++){
+    const paperID = "PE-"+Date.now()+"-"+p;
+
+    // SQ logic (ensure 1 from each unit)
+    let sqs=[];
+    for(let u=1;u<=4;u++) sqs.push(shuffle(SQ_DB[u])[0]);
+    let allSQ=[].concat(...Object.values(SQ_DB));
+    sqs.push(...shuffle(allSQ).slice(0,3));
+    sqs=sqs.slice(0,7);
+
+    // Create paper
+    const paper=document.createElement("div");
+    paper.className="paper";
+    paper.innerHTML=`
+      <div class="header">
+        <h2>Sample Question Paper – Physical Education</h2>
+        <div class="meta">Paper ID: ${paperID}</div>
+      </div>
+
+      <div class="section">
+        <h3>Section A – Short Questions (7 × 1 = 7)</h3>
+        ${sqs.map((q,i)=>`<div class="question">${i+1}. ${q}</div>`).join("")}
+      </div>
+
+      <div class="section">
+        <h3>Section B – Long Questions</h3>
+        ${[1,2,3,4].map(u=>{
+          const lqs=shuffle(LQ_DB[u]).slice(0,2);
+          return `
+            <div class="unit-title">Unit ${u}</div>
+            ${lqs.map((q,i)=>`<div class="question">${i+1}. ${q} (7 Marks)</div>`).join("")}
+          `;
+        }).join("")}
+      </div>
+    `;
+
+    container.appendChild(paper);
+
+    // Canvas → PDF
+    const canvas = await html2canvas(paper,{scale:2});
+    const img = canvas.toDataURL("image/png");
+    if(p>1) pdf.addPage();
+    pdf.addImage(img,"PNG",5,5,200,287);
+  }
+
+  pdf.save("Physical_Education_Sample_Paper.pdf");
+}
+</script>
+
+</body>
+</html>
