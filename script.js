@@ -310,9 +310,9 @@ function loadSPA(cardType) {
                 </header>
 
                 <div class="project-card">
-                    <h3>QuizzoneAI</h3>
-                    <p>AI-powered learning assistant created for Users to get them started with Quizzone Platform. Uses a predefined knowledge database and commands to populate dynamic actions. To learn more visit:</p>
-                    <a href="https://akshat-881236.github.io/Quizzone/Home/QuizzoneAI.htm" target="_blank">Visit Project</a>
+                    <h3>Akshat Network Hub</h3>
+                    <p>A centralized dashboard showing all of my project supporting Quick Navigation.</p>
+                    <a href="https://akshat-881236.github.io/AkshatNetworkHub/" target="_blank">Visit Project</a>
                 </div>
 
                 <div class="project-card">
