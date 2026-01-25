@@ -1,5 +1,5 @@
 // User profile photo (update path if needed)
-const PROFILE_PHOTO = "http://student.mdu.ac.in/Student_Biometrics/881238_Snap_10-4-2024_305%20AKSHAT%20P.jpg";
+const PROFILE_PHOTO = "https://akshat-881236.github.io/LearningClub-Key-of-Success-Learning-Point/PdfLibrary/PdfFiles/Akshat.png";
 
 // Real-time date and greetings
 function setHeaderInfo() {
