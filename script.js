@@ -262,6 +262,9 @@ function loadSPA(cardType) {
                         <span>Academic Year</span><span>2024–2027</span>
                     </div>
                 </div>
+                <div class="edu-block">
+                <a onclick="exitSPA()">Exit</a>
+                </div>
             </section>
             `;
             break;
