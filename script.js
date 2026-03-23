@@ -378,10 +378,32 @@ function loadSPA(cardType) {
         default:
             html += `No Details Available`;
     }
+// ✅ FIX: Close layers
+    html += `
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+
+    // ✅ FIX: Inject into DOM
+    spaContainer.innerHTML = html;
+
+    // ✅ FIX: Activate SPA
+    spaContainer.classList.add('active');
+
+    // ✅ FIX: Scroll reset
+    window.scrollTo(0, 0);
+
+    // ✅ FIX: URL state
+    window.history.pushState({ spa: cardType }, "", `#${cardType}`);
 }
 
-window.exitSPA = function() 
-{ spaContainer.classList.remove('active'); 
-  setTimeout(() => spaContainer.innerHTML = '', 300); 
-  window.history.pushState({}, "", window.location.pathname); 
-} 
+// Exit SPA
+window.exitSPA = function() {
+    if (!spaContainer) return;
+    spaContainer.classList.remove('active');
+    setTimeout(() => spaContainer.innerHTML = '', 300);
+    window.history.pushState({}, "", window.location.pathname);
+};
