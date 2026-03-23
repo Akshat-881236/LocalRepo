@@ -371,6 +371,9 @@ function loadSPA(cardType) {
                     <div class="info-row"><span>Email</span><span><a href="mailto:its.akshatnetworkhub23@gmail.com" rel="no referrer">its.akshatnetworkhub23@gmail.com</a></span></div>
                     <div class="info-row"><span>Location</span><span>Kherki Daula, Gurugram, Haryana</span></div>
                 </div>
+                <div class="edu-block">
+                    <a onclick="exitSPA()">Exit</a>
+                </div>
             </section>
             `;
             break;
@@ -386,18 +389,6 @@ function loadSPA(cardType) {
         </div>
     </div>
     `;
-
-    // ✅ FIX: Inject into DOM
-    spaContainer.innerHTML = html;
-
-    // ✅ FIX: Activate SPA
-    spaContainer.classList.add('active');
-
-    // ✅ FIX: Scroll reset
-    window.scrollTo(0, 0);
-
-    // ✅ FIX: URL state
-    window.history.pushState({ spa: cardType }, "", `#${cardType}`);
 }
 
 // Exit SPA
