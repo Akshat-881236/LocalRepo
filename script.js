@@ -130,7 +130,7 @@ function loadSPA(cardType) {
                 <div class="info-table">
                     <div class="info-row"><span>Name</span><span>Akshat Prasad</span></div>
                     <div class="info-row"><span>Father</span><span>Mr. Sanjay Prasad</span></div>
-                    <div class="info-row"><span>Mother</span><span>Mrs. Leela Prasad</span></div>
+                    <div class="info-row"><span>Email</span><span><a href="mailto:akshatpsd2005@gmail.com" rel="no referrer">akshatpsd2005@gmail.com</a></span></div>
                     <div class="info-row"><span>Location</span><span>Kherki Daula, Gurugram, Haryana</span></div>
                 </div>
 
@@ -203,6 +203,9 @@ function loadSPA(cardType) {
         </div>
       </div>
     </div>
+  </div>
+  <div class="edu-block">
+    <a onclick="exitSPA()">Exit</a>
   </div>
 </footer>
 
@@ -298,6 +301,10 @@ function loadSPA(cardType) {
                     <h3>Git & GitHub</h3>
                     <p>Version control, CI-ready workflows, and collaborative development.</p>
                 </article>
+
+                <div class="edu-block">
+                <a onclick="exitSPA()">Exit</a>
+                </div>
             </section>
             `;
             break;
@@ -332,6 +339,9 @@ function loadSPA(cardType) {
 
                 <footer class="section-footer">
                     <a class="link-btn" href="https://akshat-881236.github.io/Portfolio-881236/Projects.htm">View All Projects</a>
+                    <div class="edu-block">
+                <a onclick="exitSPA()">Exit</a>
+                </div>
                 </footer>
             </section>
             `;
@@ -346,55 +356,27 @@ function loadSPA(cardType) {
                     <i class="bi bi-envelope"></i>
                     <h2>Contact Me</h2>
                 </header>
-
-                <form class="contact-form" onsubmit="sendContact(event)">
-                    <div class="form-row"><input name="name" placeholder="Name" required></div>
-                    <div class="form-row"><input type="email" name="email" placeholder="Email" required></div>
-                    <div class="form-row"><input name="country" placeholder="Country" required></div>
-                    <div class="form-row"><input name="state" placeholder="State"></div>
-                    <div class="form-row"><input name="contact" placeholder="Contact Number" required></div>
-
-                    <div class="form-row">
-                        <select name="occupation" id="occupationSelect" required>
-                            <option value="">Choose Occupation</option>
-                            <option value="Student">Student</option>
-                            <option value="Employee">Employee</option>
-                            <option value="HR">HR</option>
-                            <option value="Manager">Manager</option>
-                        </select>
+                <div class="profile-wrapper">
+                    <div class="profile-ring">
+                        <img src="${PROFILE_PHOTO}" class="profile-img">
+                        <hr class="hr-icon">
                     </div>
+                </div>
 
-                    <div id="occupationDetail" class="occupation-detail"></div>
-
-                    <button class="primary-btn">Send Email</button>
-                </form>
-
-                <div id="contactStatus" class="status-text"></div>
+                <div class="info-table">
+                    <div class="info-row"><span>Name</span><span>Akshat Prasad</span></div>
+                    <div class="info-row"><span>Contact Number :</span><span><a href="tel:7838250289" rel="no referrer">7838250289</a></span></div>
+                    <div class="info-row"><span>Alternate Contact Number :</span><span><a href="tel:9953854901" rel="no referrer">9953854901</a></span></div>
+                    <div class="info-row"><span>Email</span><span><a href="mailto:akshatpsd2005@gmail.com" rel="no referrer">akshatpsd2005@gmail.com</a></span></div>
+                    <div class="info-row"><span>Email</span><span><a href="mailto:its.akshatnetworkhub23@gmail.com" rel="no referrer">its.akshatnetworkhub23@gmail.com</a></span></div>
+                    <div class="info-row"><span>Location</span><span>Kherki Daula, Gurugram, Haryana</span></div>
+                </div>
             </section>
             `;
             break;
 
         default:
             html += `No Details Available`;
-    }
-
-    html += `
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    `;
-
-    spaContainer.innerHTML = html;
-    spaContainer.classList.add("active");
-    window.history.pushState({ spa: true, card: cardType }, "", "#" + cardType);
-
-    if (cardType === "contact") {
-        setTimeout(() => {
-            document.getElementById("occupationSelect")
-                ?.addEventListener("change", updateOccupationDetail);
-        }, 160);
     }
 }
 
