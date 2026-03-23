@@ -57,32 +57,43 @@ function animateThought() {
 animateThought();
 setInterval(animateThought, 6000); // every 6 sec new thought animates
 
-// Sidebar toggle logic
+// ================= SIDEBAR =================
 const sidebar = document.getElementById("sidebar");
 const menuToggle = document.getElementById("menuToggle");
 const sidebarProfile = document.getElementById("sidebarProfile");
-menuToggle.addEventListener("click", () => {
-    sidebar.classList.toggle("active");
-});
-sidebarProfile.addEventListener("click", () => {
-    sidebar.classList.toggle("active");
-});
-sidebar.addEventListener("transitionend", function() {
-    if (sidebar.classList.contains("active")) {
-        sidebarProfile.style.display = 'flex';
-    } else {
-        sidebarProfile.style.display = 'none';
-    }
-});
 
-// Expandable sidebar menu logic
+// ✅ FIX: safe event binding
+if (menuToggle && sidebar) {
+    menuToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+    });
+}
+
+if (sidebarProfile && sidebar) {
+    sidebarProfile.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+    });
+}
+
+if (sidebar) {
+    sidebar.addEventListener("transitionend", function() {
+        if (!sidebarProfile) return;
+
+        sidebarProfile.style.display =
+            sidebar.classList.contains("active") ? 'flex' : 'none';
+    });
+}
+
+
+// ================= SIDEBAR MENU =================
 document.querySelectorAll(".expandable").forEach(item => {
     item.addEventListener("click", function(e) {
         e.stopPropagation();
-        // Collapse others
+
         document.querySelectorAll('.expandable').forEach(li => {
             if (li !== item) li.classList.remove('active');
         });
+
         item.classList.toggle('active');
     });
 });
@@ -90,16 +101,21 @@ document.querySelectorAll(".expandable").forEach(item => {
 // Visit card SPA logic
 const cards = document.querySelectorAll('.visit-card');
 const spaContainer = document.getElementById('spaContainer');
-const dashboardSection = document.getElementById('dashboardSection');
-
-cards.forEach(card => {
-    card.addEventListener('click', () => {
-        loadSPA(card.dataset.card);
+// ✅ FIX: bind only if exists
+if (cards && spaContainer) {
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            loadSPA(card.dataset.card);
+        });
     });
-});
+}
 
 // SPA templates for each card
 function loadSPA(cardType) {
+
+    // ✅ FIX
+    if (!spaContainer) return;
+    
     let html = `
     <div class="spa-content">
         <div class="spa-inner">
@@ -389,6 +405,14 @@ function loadSPA(cardType) {
         </div>
     </div>
     `;
+
+    spaContainer.innerHTML = html;
+
+    spaContainer.classList.add('active');
+
+    window.scrollTo(0, 0);
+
+    window.history.pushState({ spa: cardType }, "", "#" + cardType);
 }
 
 // Exit SPA
